@@ -1,11 +1,23 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 
 export default function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior="padding"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+      style={styles.container}
+    >
       <View style={styles.form}>
         <Text style={styles.label}>Username</Text>
         <TextInput
@@ -24,7 +36,7 @@ export default function App() {
         />
         <Button title="Login" onPress={() => {}} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
